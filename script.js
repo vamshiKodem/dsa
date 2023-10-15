@@ -75,3 +75,48 @@ const rotate = (arr, k) => {
 };
 
 // console.log(rotate([1, 2, 3, 4, 5, 6], 2));
+
+// 1572. Matrix Diagonal Sum
+const diagonalSum = (mat) => {
+  let sum = 0;
+  for (let i = 0; i < mat.length; i++) {
+    for (let j = 0; j < mat[i].length; j++) {
+      if (i === j || i + j === mat[0].length - 1) {
+        sum = sum + mat[i][j];
+      }
+    }
+  }
+  return sum;
+};
+
+//   console.log(
+//     diagonalSum([
+//       [1, 2, 3],
+//       [4, 5, 6],
+//       [7, 8, 9],
+//     ])
+//   );
+
+// 1732. Find the Highest Altitude
+const largestAltitude = (gain) => {
+  let alt = 0;
+  let maxAlt = 0;
+  for (let i = 0; i < gain.length; i++) {
+    alt = alt + gain[i];
+    if (alt > maxAlt) maxAlt = alt;
+  }
+  return maxAlt;
+};
+
+// 53. Maximum Subarray
+const maxSubArray = (nums) => {
+  let max = -Infinity;
+  let temp = 0;
+  for (let i = 0; i < nums.length; i++) {
+    temp = Math.max(nums[i], nums[i] + temp);
+    max = Math.max(temp, max);
+  }
+  return max;
+};
+
+// console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
