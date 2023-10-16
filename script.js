@@ -120,3 +120,37 @@ const maxSubArray = (nums) => {
 };
 
 // console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+// two sum
+
+const twoSum = (arr, target) => {
+  const hash = {};
+  let differValue;
+
+  for (let i = 0; i < arr.length; i++) {
+    differValue = target - arr[i];
+
+    // Here we are checking object hash had the key
+    if (differValue in hash) {
+      return [hash[differValue], i];
+    } else {
+      hash[arr[i]] = i;
+    }
+  }
+};
+
+// console.log(twoSum([2, 7, 11, 15], 9));
+
+// 121. Best Time to Buy and Sell Stock
+const maxProfit = (prices) => {
+  let minBuy = prices[0];
+  let maxProfit = 0;
+
+  for (let i = 1; i < prices.length; i++) {
+    minBuy = Math.min(minBuy, prices[i]);
+    let profit = prices[i] - minBuy;
+    maxProfit = Math.max(maxProfit, profit);
+  }
+  return maxProfit;
+};
+// console.log(maxProfit([7, 1, 5, 3, 99, 100]))
