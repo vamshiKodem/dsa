@@ -123,3 +123,46 @@ promiseAll([
     console.log(data);
   })
   .catch((data) => console.log(data));
+
+// Polyfill for Promise with out async
+class MyPromise {
+  isResolved = false;
+  resolvedData;
+
+  isRejected = false;
+  rejectedData;
+
+  constructor(executor) {
+    const resolve = (value) => {
+      this.isResolved = true;
+      this.resolvedData = value;
+    };
+
+    const reject = (value) => {
+      this.isRejected = true;
+      this.rejectedData = value;
+    };
+
+    executor(resolve, reject);
+  }
+
+  then(cb) {
+    if (this.isResolved) {
+      cb(this.resolvedData);
+    }
+    return this;
+  }
+
+  catch(cb) {
+    if (this.isRejected) {
+      cb(this.rejectedData);
+    }
+    return this;
+  }
+}
+
+const myPromise = new MyPromise((resolve, reject) => {
+  resolve(1000);
+});
+
+myPromise.then((value) => console.log(value)).catch((err) => console.log(err));
