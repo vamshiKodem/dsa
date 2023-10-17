@@ -161,8 +161,57 @@ class MyPromise {
   }
 }
 
-const myPromise = new MyPromise((resolve, reject) => {
-  resolve(1000);
+// Polyfill for Promise with async and without chaining
+class MyPromiseWithOutChaining {
+  isResolved = false;
+  resolvedData;
+  resolvedCb;
+
+  isRejected = false;
+  rejectedData;
+  rejectedCb;
+
+  constructor(executor) {
+    const resolve = (value) => {
+      this.isResolved = true;
+      this.resolvedData = value;
+      if (typeof this.resolvedCb === "function") {
+        this.resolvedCb(this.resolvedData);
+      }
+    };
+
+    const reject = (value) => {
+      this.isRejected = true;
+      this.rejectedData = value;
+      if (typeof this.rejectedCb === "function") {
+        this.rejectedCb(this.rejectedData);
+      }
+    };
+
+    executor(resolve, reject);
+  }
+
+  then(cb) {
+    this.resolvedCb = cb;
+    if (this.isResolved) {
+      this.resolvedCb(this.resolvedData);
+    }
+    return this;
+  }
+
+  catch(cb) {
+    this.rejectedCb = cb;
+    if (this.isRejected) {
+      this.rejectedCb(this.rejectedData);
+    }
+    return this;
+  }
+}
+
+const myPromise = new MyPromiseWithOutChaining((resolve, reject) => {
+  setTimeout(() => {
+    resolve(1000);
+  }, 1000);
 });
 
 myPromise.then((value) => console.log(value)).catch((err) => console.log(err));
