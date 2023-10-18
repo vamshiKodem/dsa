@@ -129,3 +129,90 @@ const myPromise = new MyPromiseWithOutChaining((resolve, reject) => {
 });
 
 myPromise.then((value) => console.log(value)).catch((err) => console.log(err));
+
+// Polyfill for promise with async and chaining
+class NewPromiseChaining {
+  isResolved = false;
+  isRejected = false;
+
+  resolveData;
+  rejectData;
+
+  resolveChain = [];
+  rejectChain = [];
+
+  constructor(executor) {
+    if (typeof executor !== "function") {
+      new Error("executor should be type of function");
+    }
+
+    const resolve = (value) => {
+      this.isResolved = true;
+      this.resolveData = value;
+      if (this.resolveChain.length) {
+        this.resolveReducer();
+      }
+    };
+
+    const reject = (value) => {
+      this.isRejected = true;
+      this.rejectData = value;
+      if (this.rejectChain.length) {
+        this.rejectReducer();
+      }
+    };
+
+    executor(resolve, reject);
+  }
+
+  then(cb) {
+    this.resolveChain.push(cb);
+    if (this.isResolved) {
+      this.resolveReducer();
+    }
+    return this;
+  }
+
+  catch(cb) {
+    this.rejectChain.push(cb);
+    if (this.isRejected) {
+      this.rejectReducer();
+    }
+    return this;
+  }
+
+  finally(cb) {
+    this.resolveChain.push(cb);
+    this.rejectChain.push(cb);
+    if (this.isRejected) {
+      this.rejectReducer();
+    }
+    if (this.isResolved) {
+      this.resolveReducer();
+    }
+  }
+
+  resolveReducer() {
+    return this.resolveChain.reduce((acc, cb) => cb(acc), this.resolveData);
+  }
+
+  rejectReducer() {
+    return this.rejectChain.reduce((acc, cb) => cb(acc), this.rejectData);
+  }
+}
+
+const newPromiseChaining = new NewPromiseChaining((resolve, reject) => {
+  setTimeout(() => {
+    resolve(10);
+  }, 1000);
+})
+  .then((data) => {
+    return data * 10;
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((data) => {
+    return data * 2;
+  })
+  .catch((data) => console.log(data));
