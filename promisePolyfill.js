@@ -9,14 +9,13 @@ const promiseReject = (value) => {
 };
 
 // Polyfill for Promise.all
-
 const promiseAll = (promises) => {
   return new Promise((resolve, reject) => {
     const output = [];
     promises.forEach((promise, index) => {
       promise
         .then((data) => {
-          output.push(data);
+          output[index] = data;
           if (promises.length - 1 === index) {
             resolve(output);
           }
@@ -28,15 +27,37 @@ const promiseAll = (promises) => {
   });
 };
 
-promiseAll([
+// promiseAll([
+//   Promise.resolve(10),
+//   Promise.resolve(20),
+//   Promise.resolve("not working"),
+// ])
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((data) => console.log(data));
+
+// Polyfill for Promise.allSettled
+const promiseAllSettled = (promises) => {
+  const resolvedPromises = promises.map((promise) => {
+    return promise
+      .then((value) => ({
+        status: "fulfilled",
+        value: value,
+      }))
+      .catch((err) => ({
+        status: "rejected",
+        value: err,
+      }));
+  });
+  return promiseAll(resolvedPromises);
+};
+
+promiseAllSettled([
   Promise.resolve(10),
   Promise.resolve(20),
   Promise.reject("not working"),
-])
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((data) => console.log(data));
+]).then((res) => console.log(res));
 
 // Polyfill for Promise with out async
 class MyPromise {
