@@ -14,6 +14,14 @@ Array.prototype.myMap = function (cb) {
 
 // console.log(number.myMap((val) => val * 10));
 
+Array.prototype.myForEach = function (cb) {
+  for (let i = 0; i < this.length; i++) {
+    cb.call(this, this[i]);
+  }
+};
+
+// number.myForEach((val) => console.log(val * 10));
+
 // Polyfill for filter
 Array.prototype.myFilter = function (cb) {
   const output = [];
