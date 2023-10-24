@@ -154,3 +154,18 @@ const maxProfit = (prices) => {
   return maxProfit;
 };
 // console.log(maxProfit([7, 1, 5, 3, 99, 100]))
+
+// 88. Merge Sorted Array
+const mergeArray = (nums1, m, nums2, n) => {
+  while (n) {
+    if (nums1[m - 1] > nums2[n - 1]) {
+      nums1[m + n - 1] = nums1[m - 1];
+      m--;
+    } else {
+      nums1[m + n - 1] = nums2[n - 1];
+      n--;
+    }
+  }
+  return nums1;
+};
+console.log(mergeArray([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3), "kslfd");
