@@ -168,4 +168,35 @@ const mergeArray = (nums1, m, nums2, n) => {
   }
   return nums1;
 };
-console.log(mergeArray([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3), "kslfd");
+// console.log(mergeArray([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+
+// 26. Remove Duplicates from Sorted Array
+const removeDuplicate = (nums) => {
+  let count = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i < nums.length - 1 && nums[i] === nums[i + 1]) {
+      continue;
+    }
+    nums[count] = nums[i];
+    count++;
+  }
+
+  return count;
+};
+
+//   console.log(removeDuplicate([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+
+// 27. Remove Element
+const removeElement = (nums, val) => {
+  let count = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== val) {
+      nums[count] = nums[i];
+      count++;
+    }
+  }
+  return count;
+};
+console.log(removeElement([3, 2, 2, 3], 3), "hello");
