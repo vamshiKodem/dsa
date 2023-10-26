@@ -55,5 +55,49 @@ const backspaceCompare = (s, t) => {
   };
   return helper(s) === helper(t) ? true : false;
 };
+// console.log(backspaceCompare("ab#c", "ad#cas##"));
 
-console.log(backspaceCompare("ab#c", "ad#cas##"));
+// 20. Valid Parentheses
+const isValid = (str) => {
+  const array = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === ")") {
+      array.push(")");
+    } else if (str[i] === "{") {
+      array.push("}");
+    } else if (str[i] === "[") {
+      array.push("]");
+    } else if (array.pop() !== str[i]) {
+      return false;
+    }
+  }
+  return array.length ? false : true;
+};
+
+// console.log(isValid("()[]{}"));
+
+// 242. Valid Anagram
+const isValidAnagram = (s, t) => {
+  if (s.length !== t.length) return false;
+  const hash = {};
+  for (let i = 0; i < s.length; i++) {
+    if (!hash[s[i]]) {
+      hash[s[i]] = 0;
+    }
+
+    if (!hash[t[i]]) {
+      hash[t[i]] = 0;
+    }
+
+    hash[s[i]]++;
+    hash[t[i]]--;
+  }
+  for (let key in hash) {
+    if (hash[key] !== 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(isValidAnagram("asfs", "assf"));
