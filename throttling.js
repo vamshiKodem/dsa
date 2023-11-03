@@ -1,3 +1,5 @@
+// Implementation of throttling using setTimeout
+
 const primaryButton = document.querySelector(".primary-button");
 
 function throttling(cb, delay) {

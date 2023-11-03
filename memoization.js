@@ -1,3 +1,6 @@
+// Here i have implemented the memoization wrapper to cache the output and
+// return the value from cache if function is called multiple times with same parameters
+
 const addNumber = (a, b) => {
   return a + b;
 };

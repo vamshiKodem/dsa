@@ -1,3 +1,5 @@
+// This file contain polyfill for call,apply and bind
+
 const person = {
   firstname: "vamshi",
   lastname: "krishna",

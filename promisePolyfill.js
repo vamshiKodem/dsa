@@ -1,3 +1,5 @@
+// This file contains most asked polyfill for promises
+
 // Polyfill for Promise.resolve
 const promiseResolve = (value) => {
   return new Promise((resolve) => resolve(value));

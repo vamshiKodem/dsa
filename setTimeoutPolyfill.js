@@ -1,3 +1,5 @@
+// Here i have implemented polyfill for setTimeout and clearTimeout
+
 // Polyfill for settimeout
 function timeoutWrapper() {
   let id = 0;

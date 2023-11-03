@@ -1,3 +1,5 @@
+// This file contains mostly asked string dsa questions
+
 // Reverse String
 const reverseString = (arr) => {
   let leftPointer = 0;

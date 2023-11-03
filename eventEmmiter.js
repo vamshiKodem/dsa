@@ -1,3 +1,5 @@
+// Implementation of own event emitter
+
 class EventEmitter {
   emitterMap = new Map();
 

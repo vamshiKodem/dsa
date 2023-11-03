@@ -1,3 +1,5 @@
+// Implementation of debouncing using setTimeout
+
 const textInput = document.querySelector(".text-input");
 
 function debouncing(cb, delay) {

@@ -1,3 +1,5 @@
+// This file contain generator and iterators function implementation
+
 function* sampleGenerator() {
   let id = 0;
   while (true) {

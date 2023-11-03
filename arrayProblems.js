@@ -1,4 +1,4 @@
-// -------------- This is section for array solution-------------
+// This file contains mostly asked array dsa questions
 
 const squareArray = (arr) => {
   let leftPointer = 0;
@@ -61,11 +61,6 @@ const reverse = (arr, start, end) => {
   return arr;
 };
 
-/**
- *
- * @param {number[]} arr
- * @param {number} k
- */
 const rotate = (arr, k) => {
   k = k % arr.length;
   reverse(arr, 0, arr.length - 1);
@@ -122,7 +117,6 @@ const maxSubArray = (nums) => {
 // console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
 
 // two sum
-
 const twoSum = (arr, target) => {
   const hash = {};
   let differValue;
@@ -199,4 +193,4 @@ const removeElement = (nums, val) => {
   }
   return count;
 };
-console.log(removeElement([3, 2, 2, 3], 3), "hello");
+console.log(removeElement([3, 2, 2, 3], 3));
