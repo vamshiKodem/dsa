@@ -1,4 +1,4 @@
-// This file contains polyfills which are most asked in interview
+// This file contains mostly asked polyfill for array methods
 
 const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -48,7 +48,6 @@ Array.prototype.myReduce = function (cb, initialValue) {
   }
   return acc;
 };
-
+// console.log(number.reduce((acc, curr) => acc + curr, 0));
 // console.log(number.myReduce((acc, curr) => acc + curr, 0));
 
-// console.log(number.reduce((acc, curr) => acc + curr, 0));
