@@ -1,4 +1,5 @@
 // 55. Jump Game
+
 const canJump = (nums) => {
   let step = nums[0];
   for (let i = 1; i < nums.length; i++) {
