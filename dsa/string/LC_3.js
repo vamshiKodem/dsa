@@ -1,5 +1,6 @@
 // 3. Longest Substring Without Repeating Characters (M)
 // using sliding window
+
 const lengthOfLongestSubstring = (s) => {
   let left = 0;
   let maxLength = 0;
