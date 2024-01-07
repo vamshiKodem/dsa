@@ -1,4 +1,5 @@
 // 167. Two Sum II - Input Array Is Sorted
+
 const twoSum = (nums, target) => {
   let left = 0;
   let right = nums.length - 1;
