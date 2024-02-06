@@ -11,10 +11,8 @@ const memoizationWrapper = () => {
     return (...args) => {
       const stringifyArgs = args.toString();
       if (stringifyArgs in cache) {
-        console.log("cached value");
         return cache[stringifyArgs];
       } else {
-        console.log("function call value");
         const result = callback(...args);
         cache[stringifyArgs] = result;
         return result;
