@@ -51,3 +51,10 @@ Array.prototype.myReduce = function (cb, initialValue) {
 // console.log(number.reduce((acc, curr) => acc + curr, 0));
 // console.log(number.myReduce((acc, curr) => acc + curr, 0));
 
+Array.prototype.myPush = function(...args){
+  for(let i = 0; i < args.length; i++){
+    this[this.length] = args[i]
+  }
+}
+// console.log(number.myPush(10, 11));
+
