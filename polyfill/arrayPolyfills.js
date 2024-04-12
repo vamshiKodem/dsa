@@ -64,3 +64,18 @@ Array.prototype.myPop = function(){
 }
 
 // numbers.myPop();
+
+// Flat Array
+const flat = (arr, depth) => {
+  const output = [];
+  for(let i = 0; i < arr.length; i++){
+    if(Array.isArray(arr[i]) && depth > 0){
+      output.push(...flat(arr[i], depth - 1))
+    } else {
+      output.push(arr[i]);
+    }
+  }
+  return output;
+}
+
+console.log(flat(arr, 2))
