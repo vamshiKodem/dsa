@@ -6,15 +6,15 @@ const addNumber = (a, b) => {
 };
 
 const memoizationWrapper = () => {
-  const cache = {};
+  const cache = new Map();
   const memoization = (callback) => {
     return (...args) => {
       const stringifyArgs = args.toString();
-      if (stringifyArgs in cache) {
-        return cache[stringifyArgs];
+      if (cache.has(stringifyArgs)) {
+        return cache.get(stringifyArgs);
       } else {
         const result = callback(...args);
-        cache[stringifyArgs] = result;
+        cache.set(stringifyArgs, result);
         return result;
       }
     };
