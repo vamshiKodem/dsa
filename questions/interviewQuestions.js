@@ -85,3 +85,5 @@ const pick = (arr) => {
   });
   return topFive;
 };
+
+console.log(pick(arr));
