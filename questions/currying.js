@@ -8,7 +8,9 @@ console.log(currying(5)(5));
 
 const multiCurrying = (a) => {
   return (b) => {
-    if (b) multiCurrying(a + b);
+    if (b) {
+      return multiCurrying(a + b);
+    }
     return a;
   };
 };
