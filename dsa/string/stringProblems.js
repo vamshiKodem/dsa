@@ -83,16 +83,8 @@ const isValidAnagram = (s, t) => {
   if (s.length !== t.length) return false;
   const hash = {};
   for (let i = 0; i < s.length; i++) {
-    if (!hash[s[i]]) {
-      hash[s[i]] = 0;
-    }
-
-    if (!hash[t[i]]) {
-      hash[t[i]] = 0;
-    }
-
-    hash[s[i]]++;
-    hash[t[i]]--;
+    hash[s] = hash[s] ? hash[s] + 1 : 0;
+    hash[t] = hash[t] ? hash[t] - 1 : 0;
   }
   for (let key in hash) {
     if (hash[key] !== 0) {
