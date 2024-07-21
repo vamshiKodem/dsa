@@ -18,33 +18,23 @@ const data = {
   },
 };
 
-// find the sum of the values in object
 let sum = 0;
 const sumCalculate = (data) => {
   if (typeof data === "number") {
     sum = sum + data;
-  } else if (typeof data === "object") {
+  } else if (typeof data === "object" && !Array.isArray(data)) {
     for (let key in data) {
-      const current = data[key];
-      if (current && typeof current === "object") {
-        if (Array.isArray(current)) {
-          for (let i = 0; i < current.length; i++) {
-            sumCalculate(current[i]);
-          }
-        } else {
-          sumCalculate(current);
-        }
-      } else if (typeof current === "number") {
-        sum = sum + current;
-      }
+      sumCalculate(data[key]);
+    }
+  } else if (typeof data === "object" && Array.isArray(data)) {
+    for (let i = 0; i < data.length; i++) {
+      sumCalculate(data[i]);
     }
   }
-
   return sum;
 };
 
 console.log(sumCalculate(data));
-
 
 const arr = [
   "He said he was not there yesterday; however, many people saw him there.",
