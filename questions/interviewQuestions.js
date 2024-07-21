@@ -77,3 +77,24 @@ const pick = (arr) => {
 };
 
 console.log(pick(arr));
+
+const input = {
+  A: (a, b, c) => a + b + c,
+  B: (a, b, c) => a - b - c,
+  C: (a, b, c) => a * b - c,
+  D: { E: (a, b, c) => a * b * c },
+};
+
+const compute = (obj, a, b, c) => {
+  const output = {};
+  for (let key in obj) {
+    if (typeof obj[key] === "function") {
+      output[key] = obj[key](a, b, c);
+    } else if (typeof obj[key] === "object") {
+      output[key] = compute(obj[key], a, b, c);
+    }
+  }
+  return output;
+};
+
+console.log(compute(input, 1, 1, 1));
