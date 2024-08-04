@@ -1,23 +1,5 @@
 // This file contains mostly asked string dsa questions
 
-// Reverse String
-const reverseString = (arr) => {
-  let leftPointer = 0;
-  let rightPointer = arr.length - 1;
-
-  while (leftPointer < rightPointer) {
-    [arr[leftPointer], arr[rightPointer]] = [
-      arr[rightPointer],
-      arr[leftPointer],
-    ];
-    leftPointer++;
-    rightPointer--;
-  }
-  return arr;
-};
-
-// console.log(reverseString(["h", "e", "l", "l", "o"]));
-
 // Reverse Words in a String III
 const reverseWord = (word) => {
   const wordArray = word.split(" ");
