@@ -41,25 +41,6 @@ const backspaceCompare = (s, t) => {
 };
 // console.log(backspaceCompare("ab#c", "ad#cas##"));
 
-// 20. Valid Parentheses
-const isValid = (str) => {
-  const array = [];
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === ")") {
-      array.push(")");
-    } else if (str[i] === "{") {
-      array.push("}");
-    } else if (str[i] === "[") {
-      array.push("]");
-    } else if (array.pop() !== str[i]) {
-      return false;
-    }
-  }
-  return array.length ? false : true;
-};
-
-// console.log(isValid("()[]{}"));
-
 // 242. Valid Anagram
 const isValidAnagram = (s, t) => {
   if (s.length !== t.length) return false;
