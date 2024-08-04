@@ -18,4 +18,5 @@ const intersection = (arr1, arr2) => {
   return output;
 };
 
-console.log(intersection(["a", "b", "b", "b", "c"], ["a", "a", "b", "b", "b"]));
+console.log(intersection(["a", "b", "b", "b", "c"], ["a", "a", "b", "b", "b"])); // ["a", "b", "b", "b"];
+console.log(intersection([1, 1, 2, 2, 2, 3, 4], [1, 1, 2, 3])); //  [1, 1, 2, 3]
