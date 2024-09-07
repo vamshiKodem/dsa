@@ -38,44 +38,40 @@ Array.prototype.myFilter = function (cb) {
 
 // Polyfill for reduce
 Array.prototype.myReduce = function (cb, initialValue) {
-  let acc = initialValue;
-  for (let i = 0; i < this.length; i++) {
-    if (acc) {
-      acc = cb.call(this, acc, this[i]);
-    } else {
-      acc = this[i];
-    }
+  let acc = initialValue ? initialValue : this[0];
+  for (let i = initialValue ? 0 : 1; i < this.length; i++) {
+    acc = cb.call(this, acc, this[i]);
   }
   return acc;
 };
-// console.log(number.reduce((acc, curr) => acc + curr, 0));
-// console.log(number.myReduce((acc, curr) => acc + curr, 0));
+console.log(number.reduce((acc, curr) => acc + curr, 0));
+console.log(number.myReduce((acc, curr) => acc + curr));
 
-Array.prototype.myPush = function(...args){
-  for(let i = 0; i < args.length; i++){
-    this[this.length] = args[i]
+Array.prototype.myPush = function (...args) {
+  for (let i = 0; i < args.length; i++) {
+    this[this.length] = args[i];
   }
-}
+};
 // console.log(number.myPush(10, 11));
 
-Array.prototype.myPop = function(){
+Array.prototype.myPop = function () {
   this[this.length - 1] = undefined;
   this.length--;
-}
+};
 
 // numbers.myPop();
 
 // Flat Array
 const flat = (arr, depth) => {
   const output = [];
-  for(let i = 0; i < arr.length; i++){
-    if(Array.isArray(arr[i]) && depth > 0){
-      output.push(...flat(arr[i], depth - 1))
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i]) && depth > 0) {
+      output.push(...flat(arr[i], depth - 1));
     } else {
       output.push(arr[i]);
     }
   }
   return output;
-}
+};
 
-console.log(flat(arr, 2))
+// console.log(flat(arr, 2));
