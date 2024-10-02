@@ -187,4 +187,42 @@ const getFilteredProducts = (
   return output;
 };
 
+// sort is based on price or name
+// category is optional
+const getFilteredProductsOptimized = (
+  products,
+  minPrice,
+  maxPrice,
+  category,
+  sortBy
+) => {
+  let output = products.reduce((acc, product) => {
+    const discountedPrice = product.discount
+      ? product.price - (product.price * product.discount) / 100
+      : product.price;
+    if (discountedPrice >= minPrice && discountedPrice <= maxPrice) {
+      if (
+        category &&
+        category.toLowerCase() === product.category.toLowerCase()
+      ) {
+        acc.push({
+          id: product.id,
+          name: product.name,
+          price: discountedPrice,
+          category: product.category,
+        });
+      }
+    }
+
+    return acc;
+  }, []);
+
+  if (sortBy === "price") {
+    output = output.sort((a, b) => a.price - b.price);
+  } else if (sortBy === "name") {
+    output = output.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return output;
+};
+
 console.log(getFilteredProducts(products, 20, 100, "fashion", "name"));
