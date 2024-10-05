@@ -14,6 +14,7 @@ function printName(city, country) {
 // newFunc("ind");
 
 Function.prototype.myCall = function (context, ...args) {
+  // here this value is callback function function (){ code }
   context.functionRef = this;
   context.functionRef(...args);
 };
@@ -30,7 +31,6 @@ Function.prototype.myApply = function (context, args) {
 Function.prototype.myBind = function (context, ...args) {
   context.functionRef = this;
   return function (...params) {
-    console.log([...args, ...params]);
     context.functionRef(...args, ...params);
   };
 };

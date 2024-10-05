@@ -73,5 +73,5 @@ const flat = (arr, depth) => {
   }
   return output;
 };
-
-// console.log(flat(arr, 2));
+const arr = [1, 2, [3, 4, 5, [6, 7, [2, 2, [3, 3]]], 3], 2, 2];
+console.log(flat(arr, 2));
