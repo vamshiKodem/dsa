@@ -55,8 +55,10 @@ Array.prototype.myPush = function (...args) {
 // console.log(number.myPush(10, 11));
 
 Array.prototype.myPop = function () {
+  const currentValue = this[this.length - 1];
   this[this.length - 1] = undefined;
   this.length--;
+  return currentValue;
 };
 
 // numbers.myPop();
