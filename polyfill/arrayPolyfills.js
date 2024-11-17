@@ -64,16 +64,21 @@ Array.prototype.myPop = function () {
 // numbers.myPop();
 
 // Flat Array
-const flat = (arr, depth) => {
-  const output = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i]) && depth > 0) {
-      output.push(...flat(arr[i], depth - 1));
-    } else {
-      output.push(arr[i]);
+Array.prototype.myFlat = function (depth) {
+  const flat = (arr, depth) => {
+    let output = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i]) && depth > 0) {
+        output = output.concat(flat(arr[i], depth - 1));
+      } else {
+        output.push(arr[i]);
+      }
     }
-  }
-  return output;
+    return output;
+  };
+
+  return flat(this, depth);
 };
+
 const arr = [1, 2, [3, 4, 5, [6, 7, [2, 2, [3, 3]]], 3], 2, 2];
-console.log(flat(arr, 2));
+console.log(arr.myFlat(arr, 2));
