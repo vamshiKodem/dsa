@@ -7,7 +7,7 @@ const findSecondLargest = (numbers) => {
     if (larger < numbers[i]) {
       smaller = larger;
       larger = numbers[i];
-    } else if (smaller < numbers[i]) {
+    } else if (smaller < numbers[i] && numbers[i] < larger) {
       smaller = numbers[i];
     }
   }
