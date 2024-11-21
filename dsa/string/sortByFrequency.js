@@ -12,11 +12,11 @@ const find = str => {
   const sortedArray = Object.keys(obj).sort((a, b) => {
     return obj[b] - obj[a];
   });
-  let ouput = '';
+  let outputString = '';
   for (let i = 0; i < sortedArray.length; i++) {
-    ouput = ouput + sortedArray[i];
+    outputString = outputString + sortedArray[i];
   }
-  return ouput;
+  return outputString;
 };
 
 console.log(find(str));
