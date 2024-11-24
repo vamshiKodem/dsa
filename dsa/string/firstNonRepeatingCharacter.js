@@ -1,5 +1,5 @@
 const firstNonRepeatingCharacter = (str) => {
-   const obj = {};
+  const obj = {};
   for (let i = 0; i < str.length; i++) {
     if (str[i] in obj) {
       obj[str[i]]++;
@@ -14,6 +14,6 @@ const firstNonRepeatingCharacter = (str) => {
     }
   }
   return null;
-}
+};
 
-console.log(firstNonRepeatingChar('aabbccq'));
+console.log(firstNonRepeatingCharacter("aabbccq")); // output q

@@ -1,4 +1,4 @@
-const isPalindrome = str => {
+const isPalindrome = (str) => {
   let left = 0;
   let right = str.length - 1;
   while (left < right) {
@@ -11,4 +11,4 @@ const isPalindrome = str => {
   return true;
 };
 
-console.log(isPalindrome('radar'));
+console.log(isPalindrome("radar")); // true

@@ -15,4 +15,4 @@ const twoSum = (nums, target) => {
   }
 };
 
-twoSum([2, 7, 11, 15], 7);
+console.log(twoSum([2, 7, 11, 15], 9));

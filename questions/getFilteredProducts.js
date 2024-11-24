@@ -225,4 +225,4 @@ const getFilteredProductsOptimized = (
   return output;
 };
 
-console.log(getFilteredProducts(products, 20, 100, "fashion", "name"));
+// console.log(getFilteredProducts(products, 20, 100, "fashion", "name"));
