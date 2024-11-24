@@ -40,21 +40,3 @@ const backspaceCompare = (s, t) => {
   return helper(s) === helper(t) ? true : false;
 };
 // console.log(backspaceCompare("ab#c", "ad#cas##"));
-
-// 242. Valid Anagram
-const isValidAnagram = (s, t) => {
-  if (s.length !== t.length) return false;
-  const hash = {};
-  for (let i = 0; i < s.length; i++) {
-    hash[s[i]] = hash[s[i]] ? hash[s[i]] + 1 : 0;
-    hash[t[i]] = hash[t[i]] ? hash[t[i]] - 1 : 0;
-  }
-  for (let key in hash) {
-    if (hash[key] !== 0) {
-      return false;
-    }
-  }
-  return true;
-};
-
-console.log(isValidAnagram("asfs", "assf"));
